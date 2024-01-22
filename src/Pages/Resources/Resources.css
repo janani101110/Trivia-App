@@ -1,0 +1,43 @@
+.sensorsimg{
+    border-radius: 20px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    float: left;
+    width: 250px;
+    padding-right: 20px;
+}
+.reso-collect{
+    position: absolute;  
+    width: 70%;
+    left: 15%;
+    top: 30%;
+    background-color: rgb(70, 3, 70);
+    padding: 10px;
+    border-radius: 20px;
+}
+.senpara{
+    color: white;
+    padding-top: 25px;
+    margin-left: 20px;
+    padding-right: 50px;
+    width: 100%;
+    text-align: justify;  
+    line-height: 21px;
+}
+.seemore button{
+    outline: none;
+    width: 80px;
+    height: 25px;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(70, 3, 70);
+    color: white;
+    margin: 20px;
+    margin-left: 577px;
+}
+.seemore button:active{
+    background: white;
+    color: black;
+    font-weight: 600;
+}
