@@ -5,7 +5,7 @@ import logo from '../Assets/logo.png'
 import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
-  const [menu,setMenu] = useState("resources");
+  const [menu,setMenu] = useState("home");
   return (
     <div className='navbar'>
         <div className='nav-logo'>
