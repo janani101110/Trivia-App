@@ -1,9 +1,9 @@
 import "./Login.css";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react"
 import axios from "axios"
-import { URL } from "../url"
 import { UserContext } from "../context/UserContext.jsx"
 import LoginImage from "../images/loginImage.jpg";
 import googleIcon from "../images/googleIcon.png";
@@ -17,7 +17,7 @@ function Login() {
 
   const handleLogin=async()=>{
     try{
-      const res=await axios.post(URL+"/api/auth/login",{email,password},{withCredentials:true})
+      const res=await axios.post("/api/auth/login",{email,password},{withCredentials:true})
       console.log(res.data)
       setUser(res.data)
       navigate("/")
@@ -28,6 +28,13 @@ function Login() {
       console.log(err)
 
     }
+
+   
+  
+
+  }
+  const google = () => {
+    window.open("http://localhost:5000/auth/google", "_self");
 
   }
 return (
@@ -56,7 +63,7 @@ return (
   </form>
 
   <div className="loginTextdiv">
-      <Link to="/login"> <button className="googleButton"> login with Google <img src={googleIcon} alt="google" className="googleIcon" /> </button></Link>
+      <button onClick={ google } className="googleButton"> login with Google <img src={googleIcon} alt="google" className="googleIcon" /> </button>
     </div>
     <div className="loginhr">
     <hr className="hrclass" />
