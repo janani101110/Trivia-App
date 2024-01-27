@@ -5,6 +5,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+const passport = require('passport')
+const CLIENT_URL = "http://localhost:3000/";
+
 //REGISTER
 router.post("/register",async(req,res)=>{
     try{
@@ -21,6 +24,27 @@ router.post("/register",async(req,res)=>{
     }
 
 })
+
+  
+  router.get("/login/failed", (req, res) => {
+    res.status(401).json({
+      success: false,
+      message: "failure",
+    });
+  });
+
+//google authentication
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    successRedirect: CLIENT_URL,
+    failureRedirect: "/login/failed",
+  })
+);
+
+
 
 //login
 router.post("/login", async (req, res) => {
