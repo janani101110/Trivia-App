@@ -1,9 +1,42 @@
 import "./Login.css";
-import { Link } from "react-router-dom";
+import "./Signup.css";
+import React, { useState } from 'react';
+import axios from "axios";
+import { URL } from "../url"; 
+import { Link, useNavigate } from "react-router-dom";
 import LoginImage from "../images/loginImage.jpg";
 import googleIcon from "../images/googleIcon.png";
 
-function Login() {
+const Signup=() => {
+
+ const [username, setUsername] = useState("");
+ const [email, setEmail] = useState("");
+ const [password, setPassword] = useState("");
+ const [error, setError] = useState(false);
+ const navigate=useNavigate();
+  
+ const handleRegister=async ()=>{
+    
+  try{
+    const res=await axios.post(URL+"/api/auth/register",{username,email,password})
+    setUsername(res.data.username)
+    setEmail(res.data.email)
+    setPassword(res.data.password)
+    setError(false)
+    navigate("/login")
+    
+  }
+  catch(err){
+    setError(true)
+    console.log(err)
+  }
+
+}
+
+
+  
+
+
 return (
     <div className="login"> 
     <div className="logindiv"> 
@@ -16,21 +49,22 @@ return (
   <form className="loginForm">
   <div className="loginTextdiv"> 
         <div className="loginText"> Username </div>
-        <input type="text" className ="loginInput" placeholder ="username" />
+        <input onChange={(e)=>setUsername(e.target.value)} type="text" className ="loginInput" id="usernameField" name="username" autoComplete="username" placeholder ="username" />
     </div>
     <br />
     <div className="loginTextdiv"> 
         <div className="loginText"> Email </div>
-        <input type="text" className ="loginInput" placeholder ="E-mail" />
+        <input onChange={(e)=>setEmail(e.target.value)} type="text" className ="loginInput" autoComplete="email" id="emailField" name="email" placeholder ="E-mail" />
     </div>
     
     <br/> 
 
     <div className="loginTextdiv"> 
         <div className="loginText"> Password </div>
-        <input type="password" className ="loginInput" placeholder ="password" />
+        <input onChange={(e)=>setPassword(e.target.value)} type="password"  className ="loginInput" autoComplete="password" id="passwordField" name="password"  placeholder ="password" />
     </div>    
-    <Link to="/signup"> <button className="loginButton"> Signup </button></Link>
+     <button onClick={handleRegister} className="loginButton"> Signup </button>
+      {error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}
   </form>
 
   <div className="loginTextdiv">
@@ -51,4 +85,4 @@ return (
 );
 
 }
-export default Login;
+export default Signup;
