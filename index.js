@@ -44,13 +44,20 @@ app.get('/auth/google', passport.authenticate('google', {
  }));
 
 // Placeholder for handling Google OAuth callback
-app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
-   res.redirect('/'); // Redirect to home page after successful authentication
- });
+//app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
+// res.redirect('/'); // Redirect to home page after successful authentication
+//});
 
  app.get('/', (req, res) => {
     // Handle the root path (e.g., send a welcome message or render a home page) i put a welcome message but need the home page here
-    res.send('Welcome to the home page');
+    res.send('');
+  });
+
+  app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/' }), // Redirect to root on failure
+  function(req, res) {
+    // Successful authentication, redirect home with access token or user information
+    res.redirect('http://localhost:3000/home'); // Replace with your actual frontend home page URL
   });
 
 app.use("/api/auth", authRoute);
