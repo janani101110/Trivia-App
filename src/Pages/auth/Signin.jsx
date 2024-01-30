@@ -14,30 +14,34 @@ const Signup=() => {
  const [error, setError] = useState(false);
  const navigate=useNavigate();
   
- const handleRegister=async ()=>{
-    
-  try{
-    const res=await axios.post("/api/auth/register",{username,email,password})
-    setUsername(res.data.username)
-    setEmail(res.data.email)
-    setPassword(res.data.password)
-    setError(false)
-    navigate("/login")
-    
-  }
-  catch(err){
-    setError(true)
-    console.log(err)
-  }
 
-}
+  
+    const handleRegister=async ()=>{
+      
+      try {
+        const res = await axios.post(URL + "/api/auth/register", { username, email, password });
+        setUsername(res.data.username);
+        setEmail(res.data.email);
+        setPassword(res.data.password);
+        setError(false);
+        navigate("/login"); 
+        
+      } catch (err) {
+        setError(true);
+        console.log(err);
+      }
+  
+    }
+
+
+  
 
 
   const google = () => {
     window.open("http://localhost:5000/auth/google", "_self");
+    
 
   }
-
 
 return (
     <div className="login"> 
