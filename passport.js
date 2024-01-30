@@ -5,6 +5,8 @@ const User = require('./models/User');
 const GOOGLE_CLIENT_ID="467826213880-fna4g7gvrp2e4fsiir10j7jgrcbmkqbi.apps.googleusercontent.com"
 const GOOGLE_CLIENT_SECRET="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"
 
+
+
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
