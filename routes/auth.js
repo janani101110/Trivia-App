@@ -20,13 +20,14 @@ router.post("/register",async(req,res)=>{
 
     }
     catch(err){
-        res.status(500).json(err)
+        console.error("Error during user registration:", err);
+        res.status(500).json({ error: "An error occurred during user registration." });
     }
 
 })
 
   
-  router.get("/login/failed", (req, res) => {
+  router.post("/login/failed", (req, res) => {
     res.status(401).json({
       success: false,
       message: "failure",
@@ -34,7 +35,7 @@ router.post("/register",async(req,res)=>{
   });
 
 //google authentication
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.post("/google", passport.authenticate("google", { scope: ["profile"] }));
 
 router.get(
   "/google/callback",
