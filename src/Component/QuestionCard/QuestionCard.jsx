@@ -1,14 +1,14 @@
 import React from 'react'
 import  './styles.css';
-import { Box, Typography} from '@mui/material';
+import { Box, Hidden, Typography} from '@mui/material';
 import { blue } from '@mui/material/colors';
 
-function QuestionCard() {
+function QuestionCard(props) {
   return (
     <Box className='cardBox'>
         <Box sx={{  display: 'flex', flex: 1,marginBottom:'15px' }}>
             <Box className='proPicFrame'>
-               <img src={require('../Assets/forum/OIP.jpeg')} className='proImg'/>
+               <img src={props.imgURL} className='proImg'/>
             </Box>
             <Box >
                 <Typography 
@@ -18,29 +18,30 @@ function QuestionCard() {
                         color:' #101318',
     
                         }}>
-                        What is Auduino?</Typography>
+                            { props.question }
+                       </Typography>
 
                 <Box sx={{  display: 'flex', flex: 1, }}>
 
-                    <Typography sx={{fontSize:14 , fontWeight:'400', color: '#7E8597' , marginRight:'15px'}}>Shaveen Amarasinghe</Typography>
-                    <Typography sx={{fontSize:14 , fontWeight:'400', color: '#7E8597'}}>23 Hours ago</Typography>
+                    <Typography sx={{fontSize:14 , fontWeight:'400', color: '#7E8597' , marginRight:'15px'}}>{props.userName}</Typography>
+                    <Typography sx={{fontSize:14 , fontWeight:'400', color: '#7E8597'}}>{props.postTime}</Typography>
 
                 </Box>
             </Box>
         </Box>
 
         <Box sx={{ marginBottom:'15px'}}>
-           <Typography sx={{ fontSize:16,fontWeight:'400',color:'#5C677D'}}>So you might have heard about Arduino from your friends at school or on the internet, it seemed quite exciting, but you don’t know where to start, fret not as...</Typography>
+    <Typography sx={{ fontSize:16,fontWeight:'400',color:'#5C677D',height:'50px',overflow:'hidden'}}> {props.pQuestion}</Typography>
         </Box>
 
         <Box sx={{display:'flex', flex:1,}}>
             <Typography sx={{fontSize:14 , fontWeight:'400', color: '#7E8597', marginRight:'15px'}}>
-            45 Views
+           {props.Views}
             </Typography>
 
 
             <Typography sx={{fontSize:14 , fontWeight:'400', color: '#7E8597'}}>
-            5 Replies
+          {props.Replies}
             </Typography>
         </Box>
     </Box>

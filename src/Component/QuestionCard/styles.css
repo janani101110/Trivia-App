@@ -17,13 +17,13 @@
     height: 50px;
     width: 50px;
     border-radius: 100px;
-    background-color: red;
+   
     overflow: hidden;
     margin-right: 15px;
 }
  
 .proImg{
-    height: 100%;
+    height: auto;
     width: 100%;
 
     

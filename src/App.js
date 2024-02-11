@@ -14,6 +14,7 @@ import {AboutUs} from './Pages/AboutUs';
 // import {LogIn} from './Pages/LogIn';
 // import {SignUp} from './Pages/SignUp';
 import {Footer} from './Component/Footer/Footer';
+import ViewPost from './Pages/Forums/ViewPost';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path='/shopping'element={<Shopping/>}/>
 
           <Route path='/forum' element={<Forum/>}/>
+          <Route path='/post' element={<ViewPost/>}/>
 
           <Route path='/aboutus'element={<AboutUs/>}/>
           
